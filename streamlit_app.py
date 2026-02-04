@@ -2,21 +2,15 @@ import streamlit as st
 import torch
 import torch.nn.functional as F
 from transformers import BertTokenizer, BertForSequenceClassification
+import os
 
 st.set_page_config(page_title="Emotion Detection", layout="centered")
 
 st.title("🧠 Emotion Detection from Text")
-st.write("Enter a sentence or paragraph to detect emotion")
 
-@st.cache_resource
-def load_model():
-    tokenizer = BertTokenizer.from_pretrained("model/tokenizer")
-    model = BertForSequenceClassification.from_pretrained("model/saved_model")
-    model.eval()
-    return tokenizer, model
+st.write("App loaded. Model will load only when needed.")
 
-with st.spinner("Loading model..."):
-    tokenizer, model = load_model()
+MODEL_DIR = os.path.join(os.getcwd(), "model")
 
 label_map = {
     0: "ANGRY",
@@ -27,10 +21,37 @@ label_map = {
     5: "SURPRISE"
 }
 
+@st.cache_resource(show_spinner=True)
+def load_model():
+    st.write("⏳ Loading tokenizer...")
+    tokenizer = BertTokenizer.from_pretrained(
+        os.path.join(MODEL_DIR, "tokenizer"),
+        local_files_only=True
+    )
+
+    st.write("⏳ Loading model...")
+    model = BertForSequenceClassification.from_pretrained(
+        os.path.join(MODEL_DIR, "saved_model"),
+        local_files_only=True
+    )
+
+    model.eval()
+    st.write("✅ Model loaded successfully")
+    return tokenizer, model
+
+
 text = st.text_area("Enter text here")
 
+if st.button("Load Model"):
+    tokenizer, model = load_model()
+    st.success("Model is ready!")
+
 if st.button("Predict Emotion"):
-    if text.strip():
+    if not text.strip():
+        st.warning("Please enter some text")
+    else:
+        tokenizer, model = load_model()
+
         inputs = tokenizer(
             text,
             return_tensors="pt",
@@ -47,5 +68,3 @@ if st.button("Predict Emotion"):
 
         st.success(f"Predicted Emotion: {label_map[pred.item()]}")
         st.write(f"Confidence Score: {conf.item():.2f}")
-    else:
-        st.warning("Please enter some text")
