@@ -7,10 +7,9 @@ import os
 st.set_page_config(page_title="Emotion Detection", layout="centered")
 
 st.title("🧠 Emotion Detection from Text")
+st.write("Detect emotions from textual comments and feedback")
 
-st.write("App loaded. Model will load only when needed.")
-
-MODEL_DIR = os.path.join(os.getcwd(), "model")
+MODEL_DIR = "model"
 
 label_map = {
     0: "ANGRY",
@@ -21,36 +20,25 @@ label_map = {
     5: "SURPRISE"
 }
 
-@st.cache_resource(show_spinner=True)
+@st.cache_resource
 def load_model():
-    st.write("⏳ Loading tokenizer...")
     tokenizer = BertTokenizer.from_pretrained(
-        os.path.join(MODEL_DIR, "tokenizer"),
-        local_files_only=True
+        os.path.join(MODEL_DIR, "tokenizer")
     )
-
-    st.write("⏳ Loading model...")
     model = BertForSequenceClassification.from_pretrained(
-        os.path.join(MODEL_DIR, "saved_model"),
-        local_files_only=True
+        os.path.join(MODEL_DIR, "saved_model")
     )
-
     model.eval()
-    st.write("✅ Model loaded successfully")
     return tokenizer, model
 
-
 text = st.text_area("Enter text here")
-
-if st.button("Load Model"):
-    tokenizer, model = load_model()
-    st.success("Model is ready!")
 
 if st.button("Predict Emotion"):
     if not text.strip():
         st.warning("Please enter some text")
     else:
-        tokenizer, model = load_model()
+        with st.spinner("Loading model..."):
+            tokenizer, model = load_model()
 
         inputs = tokenizer(
             text,
@@ -68,3 +56,4 @@ if st.button("Predict Emotion"):
 
         st.success(f"Predicted Emotion: {label_map[pred.item()]}")
         st.write(f"Confidence Score: {conf.item():.2f}")
+
