@@ -1,5 +1,5 @@
 streamlit
-torch==2.1.0
+torch
 transformers
-scikit-learn
 numpy
+scikit-learn
