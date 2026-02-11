@@ -45,19 +45,19 @@ The model predicts 6 emotions:
 
 ### 😄 Happy
 
-![Happy Example](assets/happy.png)
+![Happy Example](assets/tcs_happy.png)
 
 ### 😢 Sad
 
-![Sad Example](assets/sad.png)
+![Sad Example](assets/tcs_sad.png)
 
 ### 😲 Surprise
 
-![Surprise Example](assets/surprise.png)
+![Surprise Example](assets/tcs_surprise.png)
 
 ### 😐 Neutral
 
-![Neutral Example](assets/neutral.png)
+![Neutral Example](assets/tcs_neutral.png)
 
 ---
 
@@ -80,10 +80,10 @@ The model predicts 6 emotions:
 Emotion-Detection-TCS/
 │
 ├── assets/                     # Emotion images for README
-│   ├── happy.png
-│   ├── sad.png
-│   ├── surprise.png
-│   └── neutral.png
+│   ├── tcs_happy.png
+│   ├── tcs_sad.png
+│   ├── tcs_surprise.png
+│   └── tcs_neutral.png
 │
 ├── data/                       # Dataset
 ├── model/                      # Saved BERT model & tokenizer
