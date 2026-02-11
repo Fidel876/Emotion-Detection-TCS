@@ -6,24 +6,24 @@ An NLP-based web application that detects **human emotions from text** using a f
 
 ## 📌 Project Overview
 
-Human communication is not just words — it contains emotions. Understanding emotions from text is an important task in Artificial Intelligence, used in chatbots, customer service, and mental health monitoring.
+Human communication is not just words — it contains emotions. Understanding emotions from text is an important task in Artificial Intelligence, used in chatbots, customer service systems, and mental-health monitoring tools.
 
 This project builds an **Emotion Detection System** that automatically identifies the emotion expressed in a sentence or paragraph entered by the user.
 
-Unlike traditional machine learning models (Naive Bayes, SVM), this system uses **BERT Transformer**, which understands the contextual meaning of words.
+Unlike traditional machine learning models (Naive Bayes, SVM), this system uses **BERT Transformer**, which understands contextual meaning.
 
 Example:
 
-> "I am fine"
-> can be neutral or sad depending on context — BERT can capture this.
+> “I am fine”
+> can be neutral or sad depending on context — BERT captures this.
 
 ---
 
 ## 🎯 Objectives
 
 * Detect emotions from textual input
-* Use Deep Learning (BERT) for contextual understanding
-* Provide a real-time prediction interface
+* Apply Deep Learning (BERT) for contextual understanding
+* Provide real-time prediction interface
 * Demonstrate practical NLP application
 
 ---
@@ -45,19 +45,19 @@ The model predicts 6 emotions:
 
 ### 😄 Happy
 
-![Happy Example](assets/tcs_happy.png)
+![Happy Example](tcs_happy.png)
 
 ### 😢 Sad
 
-![Sad Example](assets/tcs_sad.png)
+![Sad Example](tcs_sad.png)
 
 ### 😲 Surprise
 
-![Surprise Example](assets/tcs_surprise.png)
+![Surprise Example](tcs_surprise.png)
 
 ### 😐 Neutral
 
-![Neutral Example](assets/tcs_neutral.png)
+![Neutral Example](tcs_neutral.png)
 
 ---
 
@@ -70,7 +70,7 @@ The model predicts 6 emotions:
 | Framework            | PyTorch / HuggingFace Transformers |
 | Frontend             | Streamlit                          |
 | Data Handling        | Pandas, NumPy                      |
-| Deployment           | Localhost / Docker                 |
+| Deployment           | Localhost                          |
 
 ---
 
@@ -79,17 +79,12 @@ The model predicts 6 emotions:
 ```
 Emotion-Detection-TCS/
 │
-├── assets/                     # Emotion images for README
-│   ├── tcs_happy.png
-│   ├── tcs_sad.png
-│   ├── tcs_surprise.png
-│   └── tcs_neutral.png
-│
-├── data/                       # Dataset
-├── model/                      # Saved BERT model & tokenizer
-├── streamlit_app.py            # Main application
-├── requirements.txt            # Dependencies
-├── Dockerfile                  # Containerization
+├── streamlit_app.py
+├── tcs_happy.png
+├── tcs_sad.png
+├── tcs_surprise.png
+├── tcs_neutral.png
+├── requirements.txt
 └── README.md
 ```
 
@@ -97,7 +92,7 @@ Emotion-Detection-TCS/
 
 ## ⚙️ Installation & Setup
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/Fidel876/Emotion-Detection-TCS.git
@@ -134,7 +129,7 @@ pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-Open browser:
+Then open:
 
 ```
 http://localhost:8501
@@ -142,61 +137,45 @@ http://localhost:8501
 
 ---
 
-## 💻 How the System Works
+## 💻 How It Works
 
 1. User enters text
-2. Text preprocessing is performed
-3. BERT tokenizer converts text into tokens
-4. Fine-tuned BERT model analyzes context
-5. Model predicts emotion
-6. Emotion + confidence score displayed
+2. Text is preprocessed
+3. BERT tokenizer converts text to tokens
+4. Fine-tuned BERT analyzes context
+5. Emotion is predicted
+6. Confidence score displayed
 
 ---
 
 ## 🧪 Example Inputs
 
-| Input Text                       | Predicted Emotion |
-| -------------------------------- | ----------------- |
-| I got placed in a company today! | HAPPY             |
-| I feel very lonely               | SAD               |
-| Why did you do that?!            | ANGRY             |
-| Wow I didn't expect this         | SURPRISE          |
-| I am going to college            | NEUTRAL           |
+| Input                    | Prediction |
+| ------------------------ | ---------- |
+| I got a job today!       | HAPPY      |
+| I feel very lonely       | SAD        |
+| Why did you do that?!    | ANGRY      |
+| Wow I didn't expect this | SURPRISE   |
+| I am going to college    | NEUTRAL    |
 
 ---
 
 ## ✨ Features
 
 * Real-time emotion detection
-* Context-aware prediction (BERT)
-* Supports long paragraphs
-* Clean Streamlit UI
+* Context-aware prediction
+* Supports long text
+* Streamlit user interface
 * Confidence score output
-
----
-
-## 🐳 Docker (Optional)
-
-Build:
-
-```bash
-docker build -t emotion-detector .
-```
-
-Run:
-
-```bash
-docker run -p 8501:8501 emotion-detector
-```
 
 ---
 
 ## 📊 Applications
 
-* Social media sentiment analysis
+* Social media analysis
 * Customer feedback monitoring
-* Mental health assistance tools
-* Chatbots & AI assistants
+* Mental health chatbots
+* AI assistants
 * Review classification
 
 ---
@@ -204,8 +183,7 @@ docker run -p 8501:8501 emotion-detector
 ## 🚀 Future Improvements
 
 * Speech emotion detection
-* Multilingual emotion recognition
-* Mobile app deployment
+* Multilingual support
 * Cloud deployment (AWS/Azure)
 
 ---
@@ -213,16 +191,10 @@ docker run -p 8501:8501 emotion-detector
 ## 👨‍💻 Author
 
 **Fidel M**
-Artificial Intelligence & Data Science Student
-
----
-
-## 📜 License
-
-This project is for academic and educational purposes.
+Artificial Intelligence & Data Science
 
 ---
 
 ## ⭐ Acknowledgement
 
-Developed as part of academic/internship learning to demonstrate practical implementation of Natural Language Processing and Deep Learning.
+Developed as part of internship/academic learning to demonstrate practical implementation of NLP and Deep Learning.
